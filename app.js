@@ -39,3 +39,8 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+
+// display title and some text, but to read fully must be clicked
+//if user, use user email, else, show required email field on comment creation
+// user: (make confirm pass field)

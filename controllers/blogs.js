@@ -6,12 +6,18 @@ const Blog = require("../models/blog");
 //const passport = require("passport");
 //const bcrypt = require("bcryptjs");
 
-exports.index = asyncHandler(async (req, res) => {
+exports.blogs = asyncHandler(async (req, res) => {
   res.json({ all: "all blogs" });
 });
 
 exports.create_blog = asyncHandler(async (req, res) => {
-  res.json({ newBlog: "new blog" });
+  const blog = new Blog({
+    title: "titel",
+    text: "text",
+  })
+
+  await blog.save();
+  res.json({ newBlog: blog });
 });
 
 exports.get_blog = asyncHandler(async (req, res) => {

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const blog_controller = require("../controllers/blogs");
 
-router.get("/", blog_controller.index);
+router.get("/", blog_controller.blogs);
 
 router.post("/", blog_controller.create_blog);
 

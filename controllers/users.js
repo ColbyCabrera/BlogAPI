@@ -9,11 +9,10 @@ const User = require("../models/user");
 exports.users = asyncHandler(async (req, res) => {
   const users = await User.find({});
 
-  res.json({ users }); 
+  res.json({ users });
 });
 
 exports.create_user = asyncHandler(async (req, res) => {
-  console.log(req.body.email);
   const user = new User({
     email: req.body.email,
     password: req.body.password,
@@ -22,4 +21,31 @@ exports.create_user = asyncHandler(async (req, res) => {
   await user.save();
 
   res.json(user);
-})
+});
+
+exports.get_user = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+
+  res.json({ user });
+});
+
+exports.update_user = asyncHandler(async (req, res) => {
+  // Create a category object with escaped and trimmed data.
+  const user = new User({
+    email: req.body.email,
+    password: req.body.password,
+    _id: req.params.id,
+  });
+
+  // Check if category already exists
+  const updatedUser = await User.findByIdAndUpdate(req.params.id, user, {});
+
+  // user saved, redirect to detail page.
+  res.json({ updatedUser });
+});
+
+exports.delete_user = asyncHandler(async (req, res) => {
+  const deletedUser = await User.findByIdAndDelete(req.params.id);
+
+  res.json({ deletedUser });
+});

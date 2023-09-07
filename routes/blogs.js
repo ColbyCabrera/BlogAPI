@@ -12,4 +12,6 @@ router.put("/:id", blog_controller.update_blog);
 
 router.delete("/:id", blog_controller.delete_blog);
 
+router.post("/:id/comment", blog_controller.create_comment);
+
 module.exports = router;

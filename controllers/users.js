@@ -30,14 +30,12 @@ exports.get_user = asyncHandler(async (req, res) => {
 });
 
 exports.update_user = asyncHandler(async (req, res) => {
-  // Create a category object with escaped and trimmed data.
   const user = new User({
     email: req.body.email,
     password: req.body.password,
     _id: req.params.id,
   });
 
-  // Check if category already exists
   const updatedUser = await User.findByIdAndUpdate(req.params.id, user, {});
 
   // user saved, redirect to detail page.

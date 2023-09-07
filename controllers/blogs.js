@@ -48,7 +48,6 @@ exports.delete_blog = asyncHandler(async (req, res) => {
 });
 
 exports.create_comment = asyncHandler(async (req, res) => {
-
   const comment = new Comment({
     author: req.body.author,
     text: req.body.text,
@@ -66,8 +65,6 @@ exports.create_comment = asyncHandler(async (req, res) => {
 
   blog.comments.push(comment);
 
-
-
   const updatedBlog = new Blog({
     title: blog.title,
     author: blog.author,
@@ -75,7 +72,7 @@ exports.create_comment = asyncHandler(async (req, res) => {
     comments: blog.comments,
     _id: req.params.id,
   });
-  
+
   console.log(updatedBlog);
 
   result = await Blog.findByIdAndUpdate(req.params.id, updatedBlog, {});

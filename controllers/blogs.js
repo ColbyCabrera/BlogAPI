@@ -9,8 +9,6 @@ const Comment = require("../models/comment");
 
 exports.blogs = asyncHandler(async (req, res) => {
   const blogs = await Blog.find({}).populate("author").populate("comments");
-  console.log(blogs[1].comments);
-  console.log(blogs[0].comments);
   res.json({ blogs });
 });
 
@@ -31,15 +29,24 @@ exports.get_blog = asyncHandler(async (req, res) => {
 });
 
 exports.update_blog = asyncHandler(async (req, res) => {
-  const blog = new Blog({
+  const blog = await Blog.findById(req.params.id);
+
+  if (!(blog.comments instanceof Array)) {
+    if (typeof blog.comments === "undefined") blog.comments = [];
+    else blog.comments = new Array(blog.comments);
+  }
+
+  const updatedBlog = new Blog({
     title: req.body.title,
     author: req.body.author,
     text: req.body.text,
+    comments: blog.comments,
+    timestamp: blog.timestamp,
     _id: req.params.id,
   });
 
-  const updatedBlog = await Blog.findByIdAndUpdate(req.params.id, blog, {});
-  res.json({ updatedBlog });
+  const result = await Blog.findByIdAndUpdate(req.params.id, updatedBlog, {});
+  res.json({ result });
 });
 
 exports.delete_blog = asyncHandler(async (req, res) => {
@@ -70,6 +77,7 @@ exports.create_comment = asyncHandler(async (req, res) => {
     author: blog.author,
     text: blog.text,
     comments: blog.comments,
+    timestamp: blog.timestamp,
     _id: req.params.id,
   });
 

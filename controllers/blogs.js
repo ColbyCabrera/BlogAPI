@@ -4,8 +4,6 @@ const { body, validationResult } = require("express-validator");
 const session = require("express-session");
 const Blog = require("../models/blog");
 const Comment = require("../models/comment");
-//const passport = require("passport");
-//const bcrypt = require("bcryptjs");
 
 exports.blogs = asyncHandler(async (req, res) => {
   const blogs = await Blog.find({}).populate("author").populate("comments");

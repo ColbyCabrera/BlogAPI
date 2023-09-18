@@ -6,6 +6,8 @@ const User = require("../models/user");
 //const passport = require("passport");
 //const bcrypt = require("bcryptjs");
 
+//add bcrypt once done
+
 exports.users = asyncHandler(async (req, res) => {
   const users = await User.find({});
 
@@ -38,7 +40,6 @@ exports.update_user = asyncHandler(async (req, res) => {
 
   const updatedUser = await User.findByIdAndUpdate(req.params.id, user, {});
 
-  // user saved, redirect to detail page.
   res.json({ updatedUser });
 });
 

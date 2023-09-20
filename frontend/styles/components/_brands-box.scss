@@ -1,0 +1,98 @@
+.brands-box {
+    position: relative;
+    counter-reset: count;
+    display: flex;
+    z-index: 1;
+    height: 30%;
+    width: 100%;
+    margin-top: 10rem;
+
+    &__img {
+        counter-increment: count;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        min-width: 35rem;
+        width: 30vw;
+        height: 100%;
+        padding: 0 1.5vw;
+        overflow: hidden;
+
+        @media (max-width: 767px) {
+            width: 40vw;
+            min-width: 40rem;
+            height: 40vw;
+        }
+
+        &:nth-child(n+10):before {
+            content: counter(count);
+        }
+
+        figure {
+            position: absolute;
+            z-index: 1;
+            display: block;
+            user-select: none;
+            -webkit-appearance: none;
+            padding: 0;
+            border: none;
+            outline: none;
+            box-shadow: none;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            transform-origin: center;
+
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 60%;
+                vertical-align: middle;
+                transform-origin: center;
+            }
+        }
+    }
+}
+
+.version {
+    display: inline-block;
+    position: fixed;
+    text-align: center;
+    z-index: 1;
+    text-decoration: none;
+    background: #333;
+    font-family: sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 12px;
+    border-radius: 10px;
+    box-shadow: 0 8px 10px -5px rgba(0, 0, 0, .2);
+    top: -30px;
+    right: -50px;
+    bottom: auto;
+    transform: rotate(45deg);
+    transform-origin: 0% 100%;
+    border-radius: 0;
+    padding: 8px 30px;
+    font-size: 11px;
+
+    &:before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100px;
+        bottom: 0;
+        right: 0%;
+        background: transparent;
+    }
+
+    @media (max-width: 767px) {
+        transform: scale(.6) rotate(45deg);
+        right: -100px;
+    }
+}

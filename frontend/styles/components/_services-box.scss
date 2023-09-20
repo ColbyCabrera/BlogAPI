@@ -1,0 +1,51 @@
+.services-box {
+    height: 80rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+
+    @include respond(phone) {
+        height: 55rem;
+    }
+
+    h3 {
+        font-size: 10rem;
+        text-transform: uppercase;
+        margin: 3rem;
+        margin-bottom: 7rem;
+        font-weight: 500;
+
+        @include respond(phone) {
+            font-size: 8rem;
+        }
+    }
+
+    &__content {
+        height: 100%;
+        width: 100vw;
+        position: absolute;
+        top: -3%;
+        left: 50vw;
+        transform: translateX(-50%);
+
+        @include respond(phone) {
+            top: -35%;
+        }
+    }
+}
+
+.services {
+
+    .section-header {
+        position: relative;
+        transform: translateY(-20rem);
+
+        @include respond(phone) {
+            h1 { 
+                margin-left: 0;
+            }
+        }
+    }
+}

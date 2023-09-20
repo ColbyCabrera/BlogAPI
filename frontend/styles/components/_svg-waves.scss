@@ -1,0 +1,29 @@
+.svg-overlay {
+
+    position: relative;
+
+    &__svg {
+
+        position: absolute;
+        width: 100%;
+        overflow: hidden;
+    }
+}
+
+.svg-overlay--1 {
+
+    transform: translateY(-1px);
+
+    .svg-overlay__svg {
+        top: 0; 
+    }
+}
+
+.svg-overlay--2 {
+    
+    transform: translateY(1px);
+
+    .svg-overlay__svg {
+        bottom: 0;
+    }
+}

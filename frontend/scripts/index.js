@@ -14,23 +14,26 @@ function createBlogs(blogs) {
   const blogsContainer = document.getElementById("blogs-container");
   blogs.forEach((blog) => {
     const blogDiv = document.createElement("div");
+    const blogLink = document.createElement("a");
     const innerDiv = document.createElement("div");
     const blogTitle = document.createElement("h3");
     const blogText = document.createElement("p");
     const blogAuthor = document.createElement("p");
 
-    blogDiv.className = "blog";
+    blogLink.className = "blog";
     blogTitle.className = "blog-title";
     blogText.className = "blog-text";
     blogAuthor.className = "blog-author";
+    blogLink.href = blog._id;
 
     blogTitle.textContent = blog.title;
     blogText.textContent = blog.text;
     blogAuthor.textContent = blog.author.email
 
     blogsContainer.appendChild(blogDiv);
-    blogDiv.appendChild(innerDiv);
-    blogDiv.appendChild(blogAuthor);
+    blogDiv.appendChild(blogLink)
+    blogLink.appendChild(innerDiv);
+    blogLink.appendChild(blogAuthor);
     innerDiv.appendChild(blogTitle);
     innerDiv.appendChild(blogText);
   });

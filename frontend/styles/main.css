@@ -290,7 +290,9 @@ main h2 {
 .blogs-container a {
   text-decoration: none;
   color: black;
+  transition: all 0.1s;
 }
 .blogs-container a:hover {
   text-decoration: underline;
+  transform: scale(1.01) perspective(1px);
 }

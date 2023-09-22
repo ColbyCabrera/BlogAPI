@@ -22,7 +22,7 @@ exports.create_blog = asyncHandler(async (req, res) => {
 });
 
 exports.get_blog = asyncHandler(async (req, res) => {
-  const blog = await Blog.findById(req.params.id);
+  const blog = await Blog.findById(req.params.id).populate("author");
   res.json({ blog });
 });
 

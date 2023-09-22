@@ -24,7 +24,7 @@ function createBlogs(blogs) {
     blogTitle.className = "blog-title";
     blogText.className = "blog-text";
     blogAuthor.className = "blog-author";
-    blogLink.href = blog._id;
+    blogLink.href = `/blogs.html?id=${blog._id}`;
 
     blogTitle.textContent = blog.title;
     blogText.textContent = blog.text;

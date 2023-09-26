@@ -48,6 +48,15 @@ body {
   }
 }
 
+hr {
+  width: 20%;
+  margin: 1.4rem 0;
+  border: 0;
+  height: 1px;
+  background: #bbb;
+}
+
+
 ::-webkit-scrollbar {
   width: 10px;
 }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script
+      src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js"
+      referrerpolicy="origin"
+    ></script>
+    <title id="page-title">Blogs</title>
+  </head>
+  <body>
+    <header>
+      <div class="title">
+        <h1 class="title-small">The</h1>
+        <h1>Blogs</h1>
+        <hr />
+      </div>
+      <nav></nav>
+    </header>
+
+    <main>
+      <form action="" method="post">
+        <div>
+          <label for="text">Blog Text: </label>
+          <textarea name="text" id="text" cols="30" rows="10"></textarea>
+        </div>
+        <div>
+          <label for="title">Blog Title: </label>
+          <input type="text" name="title" id="title" />
+        </div>
+        <div>
+            <label for="author">Author Email:</label>
+            <input type="email" name="author" id="author" />
+        </div>
+
+       
+
+      </form>
+    </main>
+
+    <script src="/scripts/blogCreate.js"></script>
+  </body>
+</html>

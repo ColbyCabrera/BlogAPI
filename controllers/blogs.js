@@ -4,6 +4,7 @@ const { body, validationResult } = require("express-validator");
 const session = require("express-session");
 const Blog = require("../models/blog");
 const Comment = require("../models/comment");
+const User = require("../models/user");
 
 exports.blogs = asyncHandler(async (req, res) => {
   const blogs = await Blog.find({}).populate("author").populate("comments");
@@ -11,6 +12,18 @@ exports.blogs = asyncHandler(async (req, res) => {
 });
 
 exports.create_blog = asyncHandler(async (req, res) => {
+  try {
+    await User.findById(req.body.author);
+  } catch (error) {
+    const author = new User({
+      email: req.body.author,
+      password: "default",
+    });
+
+    await author.save();
+    req.body.author = author;
+  }
+
   const blog = new Blog({
     title: req.body.title,
     author: req.body.author,
